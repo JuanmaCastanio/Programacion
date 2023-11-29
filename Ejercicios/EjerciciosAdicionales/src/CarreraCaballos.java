@@ -14,7 +14,7 @@
 import java.util.Random;
 import java.util.Scanner;
 
-public class EjercicioDefinitivo {
+public class CarreraCaballos {
   public static void main(String[] args) throws InterruptedException {
     Scanner dato = new Scanner(System.in);
     Random generador = new Random();

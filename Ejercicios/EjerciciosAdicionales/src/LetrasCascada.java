@@ -33,6 +33,5 @@ public class LetrasCascada {
                 System.out.println(caracter);
             }
         } while (cont != palabra.length());
-        
     }
 }
