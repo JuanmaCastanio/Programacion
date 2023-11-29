@@ -1,0 +1,38 @@
+1.(Huelga1) Programa que  genere los números naturales entre 0 y un nº introducido por teclado, cuente cuantos pares
+e impares hay; e imprima la suma de los pares e impares (de pares e impares).
+
+2.(Huelga2) Programa que solicite nº al usuario repetidamente hasta que introduzca un 0,
+entonces el programa mostrará como resultado el número de valores introducidos y
+y los que son multiplos de 5
+
+3.(Pregunta) Realiza un programa que pida al usuario repetidamente palabras hasta que no 
+introduzca nada. Cada palabra introducida se mostrará en mayúsculas.
+
+4.(Pregunta2) Realiza un programa que pida al usuario repetidamente frases hasta introduzca .
+Cada palabra introducida se mostrará en mayúsculas.
+
+5.(Banderas1)Realizar un programa que muestre por consola alternativamente los mensajes "Hola", "Adiós", utilizando una bandera, 
+un nº de veces aleatorio entre 1 y 10. Considera que una vez se corresponde a una pareja de mensajes
+
+6. (Banderas2)Realizar un programa que muestre por consola alternativamente los mensajes "Hola", "Adiós", utilizando una bandera, 
+un nº de veces aleatorio entre 1 y 10.
+
+7.(Banderas3)Realizar un programa que muestre por consola alternativamente los mensajes "Hola", "Adiós", utilizando una bandera, 
+un nº de veces aleatorio y par entre 1 y 10.
+
+8.(Moneda)Programa que simule el lanzamiento de una moneda y muestre si ha salido cara o cruz.
+Al finalizar una tirada se preguntará si quiere tirar otra vez.
+
+9. (Rectangulo)Generar aleatoriamente los lados del rectángulo entre 1 y 10,
+y pintarlo en pantalla con un  rellenode *
+
+10. (Cuadrado)Generar un cuadrado de lado aleatorio entre 1 y 10.
+
+11. (Marco)Pintar un marco de una base y altura generados aleatoriamente
+entre 3 y 10. el relleno será solicitado al usuario por teclado
+
+12. (Triangulo4)Programa que pinte un triángulo de base aleatoria entre 1 y 10, con la base más grande al final
+
+13. (Triangulo5)Programa que pinte un triángulo de base aleatoria entre 1 y 10, con la base más grande al principio
+
+14. (Triangulo6)Programa que pinte un triángulo de base aleatoria entre 1 y 10, formando una flecha
