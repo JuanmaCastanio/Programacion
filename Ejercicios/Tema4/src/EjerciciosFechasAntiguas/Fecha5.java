@@ -9,15 +9,11 @@ public class Fecha5 {
         Scanner dato = new Scanner(System.in);
         SimpleDateFormat fechaCorta = new SimpleDateFormat("dd'/'MM'/'yyyy");
         Calendar fechaFactura = Calendar.getInstance();
-        int dia = 0; //Variable para extraer dia
-        int mes = 0; //Variable para extraer mes
-        int año = 0; //Variable para extraer año
-        
+        int dia = 0, mes = 0, año = 0;
         try {
             System.out.print("Fecha de la factura (dd/mm/yyyy): ");
             String fechaFacturaString = dato.nextLine();
 
-            //Extraccíon dia, mes, año
             dia = Integer.parseInt(fechaFacturaString.substring(0,fechaFacturaString.indexOf("/")));
             mes = Integer.parseInt(fechaFacturaString.substring(fechaFacturaString.indexOf("/") + 1,fechaFacturaString.lastIndexOf("/")));
             año = Integer.parseInt(fechaFacturaString.substring(fechaFacturaString.lastIndexOf("/") + 1,fechaFacturaString.length()));
@@ -25,7 +21,6 @@ public class Fecha5 {
 
             System.out.print("Termino de pago (7D/14D/3x30):");
             String terminoPago = dato.nextLine();
-
             switch (terminoPago) {
                 case "7D":{
                     fechaFactura.add(Calendar.DAY_OF_MONTH, 7);
@@ -59,5 +54,6 @@ public class Fecha5 {
         } catch (Exception e) {
             System.out.println("Error. Fecha Incorrecta");
         }
+
     }
 }
