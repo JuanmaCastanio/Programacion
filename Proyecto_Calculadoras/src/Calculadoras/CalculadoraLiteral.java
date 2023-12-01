@@ -12,90 +12,98 @@ import java.util.Scanner;
 public class CalculadoraLiteral {
     /**
      * convertirNumero
-     * Transforma cada número de tipo String recogido en palabra a un número de tipo int 
+     * transforma cada número de tipo String recogido como frase a un número de tipo int.
      * 
-     * @param num1 La primera cifra del número
-     * @param num2 La segunda cifra del número. Si el número tiene 1 cifra, se asigna por defecto ""
-     * @return
+     * @param num1 La primera cifra del número.
+     * @param num2 La segunda cifra del número. Si el número tiene 1 cifra, se asigna por defecto "".
+     * @return El número ya convertido en un entero.
      */
     public static int convertirNumero(String num1, String num2){
         try{
-            String aux = "";
-            String num;
+            String numeroEnCifras = ""; //Número representado en cifras
+            String num; //Almacena una cifra para buscarla en un switch
+            //Bucle para repetir la busqueda de la cifra según el tamaño del número (Max 2 dígitos) 
             for (int i = 1; i <= 2; i++) {
-                if(i == 1){
+                if(i == 1){ //Si estamos en la primera iteración, elegimos la primera cifra
                     num = num1;
                 }
-                else{
+                else{ //Si estamos en la segunda, elegimos la segunda
                     num = num2;
                 }
+                //Según el caso, concatena a numeroEnCifras la cifra correspondiente 
                 switch (num) {
-                    case "":{
+                    case "":{ //Si el numero solo tiene una cifra, se recoge en este caso num2
                     }break;
                     case "cero":{
-                        aux = aux + "0";
+                        numeroEnCifras = numeroEnCifras + "0";
                     }break;
                     case "uno":{
-                        aux = aux + "1";
+                        numeroEnCifras = numeroEnCifras + "1";
                     }break;
                     case "dos":{
-                        aux = aux + "2";
+                        numeroEnCifras = numeroEnCifras + "2";
                     }break; 
                     case "tres":{
-                        aux = aux + "3";
+                        numeroEnCifras = numeroEnCifras + "3";
                     }break; 
                     case "cuatro":{
-                        aux = aux + "4";
+                        numeroEnCifras = numeroEnCifras + "4";
                     }break; 
                     case "cinco":{
-                            aux = aux + "5";
+                        numeroEnCifras = numeroEnCifras + "5";
                     }break; 
                     case "seis":{
-                        aux = aux + "6";
+                        numeroEnCifras = numeroEnCifras + "6";
                     }break; 
                     case "siete":{
-                        aux = aux + "7";
+                        numeroEnCifras = numeroEnCifras + "7";
                     }break; 
                     case "ocho":{
-                        aux = aux + "8";
+                        numeroEnCifras = numeroEnCifras + "8";
                     }break; 
                     case "nueve":{
-                        aux = aux + "9";
+                        numeroEnCifras = numeroEnCifras + "9";
                     }break;
-                    default:{
+                    default:{ //Si no es ninguna de los casos anteriores, consideramos que es una excepción
                         throw new Exception();
                     }
                 }
             }
-            return Integer.parseInt(aux);
-        }catch (Exception error1){
-            System.out.println("Los datos introducidos son incorrectos\n");
+            return Integer.parseInt(numeroEnCifras);
+        }catch (Exception error1){ //Si salta una excepción, mostramos mensaje de error y volvemos a comenzar el programa
+            System.out.println("ERROR. Los datos introducidos son incorrectos\n");
             main(null);
         }
-        return -1;
+        return -1; 
     }
     /**
+     * numeroCifras
+     * divide la cadena en la que se encuenta el número escrito en dos cadenas diferentes.
      * 
-     * @param num
-     * @return
+     * @param num La cadena String en la que se encuenta el numero.
+     * @return Número entero.
      */
     public static int numeroCifras (String num){
-        int operando;
+        int operando; //Variable donde guardamos el número entero
+        //Si el número es de 1 cifra, lo pasamos directamente a convertirNumero
         if(!num.contains(" ")){
             operando = convertirNumero(num, "");
         }
+        //Si el número es de 2 cifras, lo dividimos en dos cadenas y lo pasamos a convertirNumero
         else{
-            String primerNum = num.substring(0, num.indexOf(" "));
-            String segundoNum = num.substring((num.indexOf(" ") + 1), num.length());
-            operando = (int)convertirNumero(primerNum, segundoNum);
+            String primerNum = num.substring(0, num.indexOf(" ")).trim(); //Recoge la primera cifra como cadena
+            String segundoNum = num.substring((num.indexOf(" ") + 1), num.length()).trim(); //Recoge la segunda cifra como cadena
+            operando = convertirNumero(primerNum, segundoNum);
         }
         return operando;
     }
     /**
+     * resultado
+     * realiza con dos números una operación elegida por el usuario.
      * 
-     * @param operando1
-     * @param operando2
-     * @param signoOperacion
+     * @param operando1 El primer operador de la operación.
+     * @param operando2 El segundo operador de la operación.
+     * @param signoOperacion La operación elegida.
      */
     public static void resultado(int operando1, int operando2, String signoOperacion){  
         try{    
@@ -115,12 +123,12 @@ public class CalculadoraLiteral {
                 case "modulo":{
                    System.out.printf("Resultado: %d\n", (int)(operando1 % operando2));
                 }break;
-                default:{
+                default:{ //Si el caso no está contemplado, lo tratamos como una excepción
                     throw new Exception();
                 }
             }
-        }catch(Exception error2){
-            System.out.println("La operacion es incorrecta\n");
+        }catch(Exception error2){ //Si salta una excepción, mostramos mensaje de error y volvemos a comenzar el programa
+            System.out.println("ERROR. La operacion es incorrecta\n");
             main(null);
         }
     }
