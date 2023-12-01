@@ -10,7 +10,14 @@ package Calculadoras;
 import java.util.Scanner;
 
 public class CalculadoraLiteral {
-    
+    /**
+     * convertirNumero
+     * Transforma cada número de tipo String recogido en palabra a un número de tipo int 
+     * 
+     * @param num1 La primera cifra del número
+     * @param num2 La segunda cifra del número. Si el número tiene 1 cifra, se asigna por defecto ""
+     * @return
+     */
     public static int convertirNumero(String num1, String num2){
         try{
             String aux = "";
@@ -67,7 +74,11 @@ public class CalculadoraLiteral {
         }
         return -1;
     }
-    
+    /**
+     * 
+     * @param num
+     * @return
+     */
     public static int numeroCifras (String num){
         int operando;
         if(!num.contains(" ")){
@@ -80,7 +91,12 @@ public class CalculadoraLiteral {
         }
         return operando;
     }
-    
+    /**
+     * 
+     * @param operando1
+     * @param operando2
+     * @param signoOperacion
+     */
     public static void resultado(int operando1, int operando2, String signoOperacion){  
         try{    
             switch (signoOperacion) {
@@ -111,17 +127,17 @@ public class CalculadoraLiteral {
     
     public static void main(String[] args) {
         Scanner dato = new Scanner(System.in);
-        int operando1 = 0, operando2 = 0;
-        double resultado = 0;
+        int operando1 = 0, operando2 = 0; //Variables para acumular los valores en tipo entero 
         System.out.print("Introduce el primer numero(E.j: nueve siete -> 97): ");
-        String num1 = dato.nextLine().toLowerCase().trim();
+        String num1 = dato.nextLine().toLowerCase().trim(); //Primer numero recogido en cadena
         System.out.print("Introduce el segundo numero(E.j: nueve siete -> 97): ");
-        String num2 = dato.nextLine().toLowerCase().trim();
+        String num2 = dato.nextLine().toLowerCase().trim(); //Segundo numero recogido en cadena
         System.out.print("Introduce la operacion(Suma/Resta/Producto/Division/Modulo): ");
-        String signoOperacion = dato.nextLine().toLowerCase().trim();
-        
+        String signoOperacion = dato.nextLine().toLowerCase().trim(); //Operación elegida
+        //Llamamos a "numeroCifras" para saber si el número tiene 1 o 2 cifras
         operando1 = numeroCifras(num1);
         operando2 = numeroCifras(num2);
+        //LLamamos a resultado para que haga la operación elegida
         resultado(operando1, operando2, signoOperacion);
     }
 }
