@@ -128,11 +128,13 @@ public class CalculadoraBinaria {
                 seleccionarOperacion(operacion, operando1, operando2);
             }
             else{ //Si el segundo binario es incorrecto, muestra un error
-                System.out.println("ERROR. El segundo binario es incorrecto");
+                System.out.println("ERROR. El segundo binario es incorrecto\n");
+                main(null);
             }
         }
         else{ //Si el primer binario es incorrecto, muestra un error
-            System.out.println("ERROR. El primer binario es incorrecto");
+            System.out.println("ERROR. El primer binario es incorrecto\n");
+            main(null);
         }
         
         
