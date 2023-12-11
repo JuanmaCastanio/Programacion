@@ -1,7 +1,7 @@
 package Calculadoras;
 
 /**
- *
+ * 
  * @author Juan José Blanco Díaz
  * @version 1.0
  * @since 24-11-2023

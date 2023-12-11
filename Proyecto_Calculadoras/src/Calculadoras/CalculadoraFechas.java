@@ -5,8 +5,6 @@ import java.time.DayOfWeek;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.Month;
-import java.time.Period;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.Scanner;
@@ -51,27 +49,57 @@ public class CalculadoraFechas {
             switch (operacion) {
                 case "diasemana":{ //Mediante una fecha, sacar el dia de la semana correspondiente
                     DateTimeFormatter formato = DateTimeFormatter.ofPattern("d[d]'/'M[M]'/'yyyy");
+                    DateTimeFormatter formatoSinBarras = DateTimeFormatter.ofPattern("ddMMyyyy");
                     System.out.print("Introduce una fecha (dd/mm/yyyy):");
-                    LocalDate fecha = LocalDate.parse(dato.nextLine(),formato); //Recoge la fecha introducida y le aplica un formato
-                    System.out.println("El día de la semana es " + diaSemanaEspañol(fecha.getDayOfWeek()));
+                    String fechaString = dato.nextLine(); //Recoge la fecha introducida como string
+                    if(fechaString.indexOf("/") == -1){
+                        LocalDate fecha = LocalDate.parse(fechaString, formatoSinBarras);
+                        System.out.println("El día de la semana es " + diaSemanaEspañol(fecha.getDayOfWeek()));
+                    }
+                    else{
+                        LocalDate fecha = LocalDate.parse(fechaString, formato);
+                        System.out.println("El día de la semana es " + diaSemanaEspañol(fecha.getDayOfWeek()));
+                    }
                 }
                     break;
-                case "fechassemana":{ //Mediante nº de semana anual, sacar las fechas de la semana correspondiente
+                case "fechasemana":{ //Mediante nº de semana anual, sacar las fechas de la semana correspondiente
                     DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd'/'MM'/'yyyy");
-                    System.out.println("Introduce un nº de semana ");
+                    System.out.print("Introduce un nº de semana: ");
                     int numeroSemana = dato.nextInt(); //Número de la semana anual
                     LocalDate fechaComienzo = LocalDate.of(2023, 1, 1); //Fecha donde comienza en el primer día
-                    System.out.println("La semana " + numeroSemana + " dura entre: " + 
-                    formato.format(fechaComienzo.plusDays(numeroSemana*7)) + " - " + formato.format(fechaComienzo.plusDays((numeroSemana + 1) *7)));
-                    
+                    if(numeroSemana < 0 || numeroSemana > 53){
+                        System.out.println("ERROR. El número de semana no es correcto.");
+                        main(null);
+                    }
+                     else{
+                        System.out.println("La semana " + numeroSemana + " dura entre: " + 
+                        formato.format(fechaComienzo.plusDays(numeroSemana*7)) + " - " + formato.format(fechaComienzo.plusDays((numeroSemana + 1) *7)));
+                    }   
                 }
                     break;
                 case "fechahora":{ //Mediante dos fecha con hora, sacar el nº de cada valor correspondiente
+                    LocalDateTime fecha1 = LocalDateTime.now();
+                    LocalDateTime fecha2 = LocalDateTime.now();
                     DateTimeFormatter formato = DateTimeFormatter.ofPattern("d[d]'/'M[M]'/'yyyy H[H]':'m[m]':'s[s]");
-                    System.out.print("Introduce una fecha y una hora (dd/mm/ss hh:mm:ss): ");
-                    LocalDateTime fecha1 = LocalDateTime.parse(dato.nextLine(),formato); //Primera fecha
-                    System.out.print("Introduce otra fecha y una hora (dd/mm/ss hh:mm:ss): ");
-                    LocalDateTime fecha2 = LocalDateTime.parse(dato.nextLine(),formato); //Segunda fecha
+                    DateTimeFormatter formatoSinBarras = DateTimeFormatter.ofPattern("d[d]M[M]yyyy H[H]m[m]s[s]");
+                    System.out.print("Introduce una fecha y una hora (dd/mm/yyyy hh:mm:ss): ");
+                    String fechaString1 = dato.nextLine(); //Recoge la fecha introducida como string
+                    if(fechaString1.indexOf("/") == -1){
+                        fecha1 = LocalDateTime.parse(fechaString1, formatoSinBarras);
+                    }
+                    else{
+                        LocalDate fecha = LocalDate.parse(fechaString1, formato);
+                        System.out.println("El día de la semana es " + diaSemanaEspañol(fecha.getDayOfWeek()));
+                    }
+                    System.out.print("Introduce otra fecha y una hora (dd/mm/yyyy hh:mm:ss): ");
+                    String fechaString2 = dato.nextLine(); //Recoge la fecha2 introducida como string
+                    if(fechaString2.indexOf("/") == -1){
+                        fecha1 = LocalDateTime.parse(fechaString2, formatoSinBarras);
+                    }
+                    else{
+                        fecha2 = LocalDateTime.parse(fechaString2, formato);
+                        System.out.println("El día de la semana es " + diaSemanaEspañol(fecha2.getDayOfWeek()));
+                    }
                     if(fecha1.isAfter(fecha2)){ //Si la segunda fecha es menor que la tercera, salta un error
                         System.out.println("ERROR. La fecha 2 es anterior a la fecha 1.");
                         main(null);
