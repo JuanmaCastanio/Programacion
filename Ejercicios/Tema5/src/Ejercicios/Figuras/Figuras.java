@@ -5,12 +5,21 @@ public class Figuras {
         return Math.PI * Math.pow(radio, 2);
     }
     public double areaCuadrado(double lado){
-        return
+        return Math.pow(lado, 2);
     }
-    public double areaRectangulo(double lado, double base){
-        
+    public double areaRectangulo(double altura, double base){
+        return altura * base;
     }
-    public double areaTriangulo(double base, double altura){
-        
+    public double areaTriangulo(double altura, double base){
+        return (base * altura) / 2;
     }
+    public boolean validarNegativos(double numero){
+        if(numero >= 0){
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+
 }
