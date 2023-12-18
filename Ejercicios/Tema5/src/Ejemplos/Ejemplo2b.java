@@ -4,9 +4,8 @@ import java.util.Scanner;
 
 public class Ejemplo2b {
     
-    static int num;
 
-    public static double raizCuadrada(){
+    public static double raizCuadrada(int num){
         if(num >0){
             return Math.sqrt(num);
         }
@@ -16,6 +15,7 @@ public class Ejemplo2b {
     }
 
     public static void main(String[] args) {
+        int num;
         Scanner dato = new Scanner(System.in);
         System.out.print("Introduce un número: ");
         num = dato.nextInt();
