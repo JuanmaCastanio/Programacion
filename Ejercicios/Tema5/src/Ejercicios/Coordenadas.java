@@ -1,5 +1,7 @@
 package Ejercicios;
 
+import java.text.NumberFormat;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class Coordenadas {
@@ -33,13 +35,15 @@ public class Coordenadas {
         return distanciaPunto *(Math.sin(radianes));    
     }
     public static void main(String[] args) {
+        NumberFormat formato = NumberFormat.getInstance(Locale.GERMAN); //Formato para los decimales
+        formato.setMaximumFractionDigits(3); //Máximo de 3 decimales 
         Scanner dato = new Scanner(System.in);
         Coordenadas coordenadas = new Coordenadas();
         System.out.print("Introduce la distancia al punto: ");
         double distanciaPunto = dato.nextDouble(); //Distancia del origen al punto
         System.out.print("Introduce los grados del ángulo: ");
         double grados = dato.nextDouble(); //Grados del ángulo
-        System.out.println("Coodenada X: " + coordenadas.coordenadaX(coordenadas.conversorGradosRadianes(grados), distanciaPunto));
-        System.out.println("Coodenada Y: " + coordenadas.coordenadaY(coordenadas.conversorGradosRadianes(grados), distanciaPunto));
+        System.out.println("Coodenada X: " + formato.format(coordenadas.coordenadaX(coordenadas.conversorGradosRadianes(grados), distanciaPunto)));
+        System.out.println("Coodenada Y: " + formato.format(coordenadas.coordenadaY(coordenadas.conversorGradosRadianes(grados), distanciaPunto)));
     }
 }
